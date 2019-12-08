@@ -1785,6 +1785,15 @@ const typescriptTests = {
   valid: [],
   invalid: [
     {
+      code: `import { Subject, of } from 'rxjs';`,
+      output: actual => {
+        expect(actual).toMatchInlineSnapshot(
+          `import { of,Subject } from 'rxjs';`
+        );
+      },
+      errors: 1,
+    },
+    {
       code: input`
           |import React from "react";
           |import Button from "../Button";
